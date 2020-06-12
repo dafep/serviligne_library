@@ -2,6 +2,7 @@ library serviligne_library;
 
 /* Service */
 export "./service/internet.dart";
+export "./service/device.dart";
 
 /* Sound */
 export "./sound/sound.dart";
