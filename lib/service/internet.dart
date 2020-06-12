@@ -3,17 +3,19 @@ import "package:connectivity/connectivity.dart";
 
 class Internet {
   static StreamSubscription internetStream;
+  static bool isConnected = false;
 
-  static status() {
+  static bool status() {
     internetStream = Connectivity().onConnectivityChanged.listen((status) {
       if (status == ConnectivityResult.mobile || status == ConnectivityResult.wifi) {
         print("yes");
-        return true;
+        isConnected = true;
       } else {
         print("no");
-        return false;
+        isConnected = false;
       }
     });
+    return isConnected;
   }
 
   static close() {
