@@ -8,3 +8,6 @@ export "./sound/sound.dart";
 
 /* utils */
 export "./utils/memory.dart";
+
+/* UI */
+export "./UI/color.dart";
