@@ -26,6 +26,12 @@ class Button extends StatelessWidget {
   final double                      fontSizeString;
   final FontWeight                  fontWeightString;
   final void Function()             onPressed;
+  final bool                        iconLeft;
+  final bool                        iconRight;
+  final bool                        icon;
+  final IconData                    iconData;
+  final Color                       iconColor;
+  final double                      iconSize;
 
   Button({
     @required this.context,
@@ -53,6 +59,12 @@ class Button extends StatelessWidget {
     this.fontSizeString             = 18,
     this.fontWeightString           = FontWeight.w400,
     this.onPressed,
+    this.iconLeft                   = true,
+    this.iconRight                  = false,
+    this.icon                       = false,
+    this.iconData                   = Icons.check,
+    this.iconSize                   = 50,
+    this.iconColor                  = Colors.black,
   });
 
   @override
@@ -98,7 +110,17 @@ class Button extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: new Text(string, style: TextStyle(color: colorString, fontSize: fontSizeString, fontWeight: fontWeightString)),
+        child: new Stack(
+          children: [
+            icon == true ? iconLeft == true ? new Positioned(
+              left: 0,
+              child: Icon(iconData, size: iconSize, color: iconColor),
+            ) : iconRight == true ? new Positioned(
+              right: 0,
+              child: Icon(iconData, size: iconSize, color: iconColor),
+            ) : new SizedBox() : new SizedBox(),
+          ],
+        ),
       ),
     );
   }
