@@ -14,3 +14,4 @@ export "./utils/memory.dart";
 export "./UI/color.dart";
 export "./UI/button.dart";
 export "./UI/input.dart";
+export "./UI/body.dart";
