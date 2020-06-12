@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Memory {
-  static rememberMe({dynamic any}) async {
+  static remember({dynamic any}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     switch (any.runtimeType) {
@@ -39,7 +39,7 @@ class Memory {
     }
   }
 
-  static forgetMe({dynamic any}) async {
+  static forget({dynamic any}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     switch (any.runtimeType) {
