@@ -20,7 +20,7 @@ class Memory {
     }
   }
 
-  static forgotMe({dynamic any}) async {
+  static forgetMe({dynamic any}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     switch (any.runtimeType) {
