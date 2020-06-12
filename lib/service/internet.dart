@@ -6,10 +6,13 @@ class Internet {
 
   static status() {
     internetStream = Connectivity().onConnectivityChanged.listen((status) {
-      if (status == ConnectivityResult.mobile || status == ConnectivityResult.wifi)
+      if (status == ConnectivityResult.mobile || status == ConnectivityResult.wifi) {
+        print("yes");
         return true;
-      else
+      } else {
+        print("no");
         return false;
+      }
     });
   }
 
