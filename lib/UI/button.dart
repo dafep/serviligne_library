@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class Button extends StatelessWidget {
   final double                      width;
   final double                      height;
-  final BuildContext                context;
   final Color                       backgroundColor;
   final double                      corner;
   final double                      cornerTopLeft;
@@ -32,9 +31,13 @@ class Button extends StatelessWidget {
   final IconData                    iconData;
   final Color                       iconColor;
   final double                      iconSize;
+  final String                      imageIcon;
+  final double                      imageIconWidth;
+  final double                      imageIconHeight;
+  final bool                        load;
+  final Color                       loadColor;
 
   Button({
-    @required this.context,
     this.width,
     this.height                     = 50,
     this.backgroundColor            = Colors.blue,
@@ -65,6 +68,11 @@ class Button extends StatelessWidget {
     this.iconData                   = Icons.check,
     this.iconSize                   = 50,
     this.iconColor                  = Colors.black,
+    this.imageIcon                  = "",
+    this.imageIconWidth             = 25,
+    this.imageIconHeight            = 25,
+    this.load                       = false,
+    this.loadColor                  = Colors.black,
   });
 
   @override
@@ -114,11 +122,34 @@ class Button extends StatelessWidget {
           children: [
             icon == true ? iconLeft == true ? new Positioned(
               left: 0,
-              child: Icon(iconData, size: iconSize, color: iconColor),
+              top: 0,
+              bottom: 0,
+              child: imageIcon != "" ? new Container(
+                child: Image.asset(imageIcon, fit: BoxFit.contain),
+                width: imageIconWidth,
+                height: imageIconHeight,
+              ) : Icon(iconData, size: iconSize, color: iconColor),
             ) : iconRight == true ? new Positioned(
               right: 0,
-              child: Icon(iconData, size: iconSize, color: iconColor),
+              top: 0,
+              bottom: 0,
+              child: imageIcon != "" ? new Container(
+                child: Image.asset(imageIcon, fit: BoxFit.contain),
+                width: imageIconWidth,
+                height: imageIconHeight,
+              ) : Icon(iconData, size: iconSize, color: iconColor),
             ) : new SizedBox() : new SizedBox(),
+            new Positioned(
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              child: new Center(
+                child: load == false ? new Text(string, style: TextStyle(color: colorString, fontSize: fontSizeString, fontWeight: fontWeightString)) : SizedBox(height: height - 10, width: height - 10, child: CircularProgressIndicator(
+                  backgroundColor: loadColor,
+                )),
+              ),
+            ),
           ],
         ),
       ),
